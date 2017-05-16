@@ -27,6 +27,11 @@
 #define ERROR_CLEANUP_ERROR_KEY @"E_ERROR_WHILE_CLEANING_FILES"
 #define ERROR_CLEANUP_ERROR_MSG @"Error while cleaning up tmp files"
 
+static NSString * stringWithFormat(id obj)
+{
+    return [NSString stringWithFormat:@"%@", obj];
+}
+
 @implementation RCTConvert (UIInterfaceOrientationMask)
 RCT_ENUM_CONVERTER(UIInterfaceOrientationMask, (@{
                                                   @"Portrait": @(UIInterfaceOrientationMaskPortrait),
@@ -210,13 +215,13 @@ RCT_EXPORT_METHOD(recoBankFromStream:(RCTPromiseResolveBlock)resolve
         NSString *cardNumImgPath = [strongSelf.excardUtils saveImage:bankInfo.cardNumImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"bankName": bankInfo.bankName},
-                  @{@"cardName": bankInfo.cardName},
-                  @{@"cardType": bankInfo.cardType},
-                  @{@"cardNum": bankInfo.cardNum},
-                  @{@"validDate": bankInfo.validDate},
-                  @{@"fullImgPath": fullImgPath},
-                  @{@"cardNumImgPath": cardNumImgPath},
+                  @{@"bankName": stringWithFormat(bankInfo.bankName)},
+                  @{@"cardName": stringWithFormat(bankInfo.cardName)},
+                  @{@"cardType": stringWithFormat(bankInfo.cardType)},
+                  @{@"cardNum": stringWithFormat(bankInfo.cardNum)},
+                  @{@"validDate": stringWithFormat(bankInfo.validDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)},
+                  @{@"cardNumImgPath": stringWithFormat(cardNumImgPath)},
                   ]);
     } OnCanceled:^(int statusCode) {
         NSLog(@"OnCanceled: %d", statusCode);
@@ -248,13 +253,13 @@ RCT_EXPORT_METHOD(recoBankFromStillImage:(NSString *)src
         NSString *cardNumImgPath = [strongSelf.excardUtils saveImage:bankInfo.cardNumImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"bankName": bankInfo.bankName},
-                  @{@"cardName": bankInfo.cardName},
-                  @{@"cardType": bankInfo.cardType},
-                  @{@"cardNum": bankInfo.cardNum},
-                  @{@"validDate": bankInfo.validDate},
-                  @{@"fullImgPath": fullImgPath},
-                  @{@"cardNumImgPath": cardNumImgPath},
+                  @{@"bankName": stringWithFormat(bankInfo.bankName)},
+                  @{@"cardName": stringWithFormat(bankInfo.cardName)},
+                  @{@"cardType": stringWithFormat(bankInfo.cardType)},
+                  @{@"cardNum": stringWithFormat(bankInfo.cardNum)},
+                  @{@"validDate": stringWithFormat(bankInfo.validDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)},
+                  @{@"cardNumImgPath": stringWithFormat(cardNumImgPath)},
                   ]);
     } OnFailed:^(int statusCode, UIImage *recoImg) {
         NSLog(@"OnFailed: %d", statusCode);
@@ -276,16 +281,16 @@ RCT_EXPORT_METHOD(recoDRCardFromStream:(RCTPromiseResolveBlock)resolve
         NSString *fullImgPath = [strongSelf.excardUtils saveImage:drInfo.fullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"name": drInfo.name},
-                  @{@"sex": drInfo.sex},
-                  @{@"nation": drInfo.nation},
-                  @{@"cardId": drInfo.cardId},
-                  @{@"address": drInfo.address},
-                  @{@"birth": drInfo.birth},
-                  @{@"issueDate": drInfo.issueDate},
-                  @{@"driveType": drInfo.driveType},
-                  @{@"validDate": drInfo.validDate},
-                  @{@"fullImgPath": fullImgPath}
+                  @{@"name": stringWithFormat(drInfo.name)},
+                  @{@"sex": stringWithFormat(drInfo.sex)},
+                  @{@"nation": stringWithFormat(drInfo.nation)},
+                  @{@"cardId": stringWithFormat(drInfo.cardId)},
+                  @{@"address": stringWithFormat(drInfo.address)},
+                  @{@"birth": stringWithFormat(drInfo.birth)},
+                  @{@"issueDate": stringWithFormat(drInfo.issueDate)},
+                  @{@"driveType": stringWithFormat(drInfo.driveType)},
+                  @{@"validDate": stringWithFormat(drInfo.validDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)}
                   ]);
     } OnCanceled:^(int statusCode) {
         NSLog(@"OnCanceled: %d", statusCode);
@@ -316,16 +321,16 @@ RCT_EXPORT_METHOD(recoDRCardFromStillImage:(NSString *)src
         NSString *fullImgPath = [strongSelf.excardUtils saveImage:drInfo.fullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"name": drInfo.name},
-                  @{@"sex": drInfo.sex},
-                  @{@"nation": drInfo.nation},
-                  @{@"cardId": drInfo.cardId},
-                  @{@"address": drInfo.address},
-                  @{@"birth": drInfo.birth},
-                  @{@"issueDate": drInfo.issueDate},
-                  @{@"driveType": drInfo.driveType},
-                  @{@"validDate": drInfo.validDate},
-                  @{@"fullImgPath": fullImgPath}
+                  @{@"name": stringWithFormat(drInfo.name)},
+                  @{@"sex": stringWithFormat(drInfo.sex)},
+                  @{@"nation": stringWithFormat(drInfo.nation)},
+                  @{@"cardId": stringWithFormat(drInfo.cardId)},
+                  @{@"address": stringWithFormat(drInfo.address)},
+                  @{@"birth": stringWithFormat(drInfo.birth)},
+                  @{@"issueDate": stringWithFormat(drInfo.issueDate)},
+                  @{@"driveType": stringWithFormat(drInfo.driveType)},
+                  @{@"validDate": stringWithFormat(drInfo.validDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)}
                   ]);
     } OnFailed:^(int statusCode, UIImage *recoImg) {
         NSLog(@"OnFailed: %d", statusCode);
@@ -351,20 +356,20 @@ RCT_EXPORT_METHOD(recoIDCardFromStreamWithSide:(BOOL)bFront
         NSString *backFullImg = [strongSelf.excardUtils saveImage:idInfo.backFullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"type": @(idInfo.type)},
-                  @{@"name": idInfo.name},
-                  @{@"gender": idInfo.gender},
-                  @{@"nation": idInfo.nation},
-                  @{@"birth": idInfo.birth},
-                  @{@"address": idInfo.address},
-                  @{@"code": idInfo.code},
-                  @{@"issue": idInfo.issue},
-                  @{@"valid": idInfo.valid},
-                  @{@"frontShadow": @(idInfo.frontShadow)},
-                  @{@"backShadow": @(idInfo.backShadow)},
-                  @{@"faceImgPath": faceImgPath},
-                  @{@"frontFullImgPath": frontFullImg},
-                  @{@"backFullImgPath": backFullImg}
+                  @{@"type": stringWithFormat(@(idInfo.type))},
+                  @{@"name": stringWithFormat(idInfo.name)},
+                  @{@"gender": stringWithFormat(idInfo.gender)},
+                  @{@"nation": stringWithFormat(idInfo.nation)},
+                  @{@"birth": stringWithFormat(idInfo.birth)},
+                  @{@"address": stringWithFormat(idInfo.address)},
+                  @{@"code": stringWithFormat(idInfo.code)},
+                  @{@"issue": stringWithFormat(idInfo.issue)},
+                  @{@"valid": stringWithFormat(idInfo.valid)},
+                  @{@"frontShadow": stringWithFormat(@(idInfo.frontShadow))},
+                  @{@"backShadow": stringWithFormat(@(idInfo.backShadow))},
+                  @{@"faceImgPath": stringWithFormat(faceImgPath)},
+                  @{@"frontFullImgPath": stringWithFormat(frontFullImg)},
+                  @{@"backFullImgPath": stringWithFormat(backFullImg)}
                   ]);
     } OnCanceled:^(int statusCode) {
         NSLog(@"OnCanceled: %d", statusCode);
@@ -397,20 +402,20 @@ RCT_EXPORT_METHOD(recoIDCardFromStillImage:(NSString *)src
         NSString *backFullImg = [strongSelf.excardUtils saveImage:idInfo.backFullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         
         resolve(@[
-                  @{@"type": @(idInfo.type)},
-                  @{@"name": idInfo.name},
-                  @{@"gender": idInfo.gender},
-                  @{@"nation": idInfo.nation},
-                  @{@"birth": idInfo.birth},
-                  @{@"address": idInfo.address},
-                  @{@"code": idInfo.code},
-                  @{@"issue": idInfo.issue},
-                  @{@"valid": idInfo.valid},
-                  @{@"frontShadow": @(idInfo.frontShadow)},
-                  @{@"backShadow": @(idInfo.backShadow)},
-                  @{@"faceImgPath": faceImgPath},
-                  @{@"frontFullImgPath": frontFullImg},
-                  @{@"backFullImgPath": backFullImg}
+                  @{@"type": stringWithFormat(@(idInfo.type))},
+                  @{@"name": stringWithFormat(idInfo.name)},
+                  @{@"gender": stringWithFormat(idInfo.gender)},
+                  @{@"nation": stringWithFormat(idInfo.nation)},
+                  @{@"birth": stringWithFormat(idInfo.birth)},
+                  @{@"address": stringWithFormat(idInfo.address)},
+                  @{@"code": stringWithFormat(idInfo.code)},
+                  @{@"issue": stringWithFormat(idInfo.issue)},
+                  @{@"valid": stringWithFormat(idInfo.valid)},
+                  @{@"frontShadow": stringWithFormat(@(idInfo.frontShadow))},
+                  @{@"backShadow": stringWithFormat(@(idInfo.backShadow))},
+                  @{@"faceImgPath": stringWithFormat(faceImgPath)},
+                  @{@"frontFullImgPath": stringWithFormat(frontFullImg)},
+                  @{@"backFullImgPath": stringWithFormat(backFullImg)}
                   ]);
     } OnFailed:^(int statusCode, UIImage *recoImg) {
         NSLog(@"OnFailed: %d", statusCode);
@@ -432,17 +437,17 @@ RCT_EXPORT_METHOD(recoVECardFromStream:(RCTPromiseResolveBlock)resolve
         
         NSString *fullImgPath = [strongSelf.excardUtils saveImage:veInfo.fullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         resolve(@[
-                  @{@"plateNo": veInfo.plateNo},
-                  @{@"vehicleType": veInfo.vehicleType},
-                  @{@"owner": veInfo.owner},
-                  @{@"address": veInfo.address},
-                  @{@"model": veInfo.model},
-                  @{@"useCharacter": veInfo.useCharacter},
-                  @{@"engineNo": veInfo.engineNo},
-                  @{@"VIN": veInfo.VIN},
-                  @{@"registerDate": veInfo.registerDate},
-                  @{@"issueDate": veInfo.issueDate},
-                  @{@"fullImgPath": fullImgPath}
+                  @{@"plateNo": stringWithFormat(veInfo.plateNo)},
+                  @{@"vehicleType": stringWithFormat(veInfo.vehicleType)},
+                  @{@"owner": stringWithFormat(veInfo.owner)},
+                  @{@"address": stringWithFormat(veInfo.address)},
+                  @{@"model": stringWithFormat(veInfo.model)},
+                  @{@"useCharacter": stringWithFormat(veInfo.useCharacter)},
+                  @{@"engineNo": stringWithFormat(veInfo.engineNo)},
+                  @{@"VIN": stringWithFormat(veInfo.VIN)},
+                  @{@"registerDate": stringWithFormat(veInfo.registerDate)},
+                  @{@"issueDate": stringWithFormat(veInfo.issueDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)}
                   ]);
     } OnCanceled:^(int statusCode) {
         NSLog(@"OnCanceled: %d", statusCode);
@@ -472,17 +477,17 @@ RCT_EXPORT_METHOD(recoVECardFromStillImage:(NSString *)src
         
         NSString *fullImgPath = [strongSelf.excardUtils saveImage:veInfo.fullImg quality:[RCTConvert CGFloat:self.options[@"quality"]]];
         resolve(@[
-                  @{@"plateNo": veInfo.plateNo},
-                  @{@"vehicleType": veInfo.vehicleType},
-                  @{@"owner": veInfo.owner},
-                  @{@"address": veInfo.address},
-                  @{@"model": veInfo.model},
-                  @{@"useCharacter": veInfo.useCharacter},
-                  @{@"engineNo": veInfo.engineNo},
-                  @{@"VIN": veInfo.VIN},
-                  @{@"registerDate": veInfo.registerDate},
-                  @{@"issueDate": veInfo.issueDate},
-                  @{@"fullImgPath": fullImgPath}
+                  @{@"plateNo": stringWithFormat(veInfo.plateNo)},
+                  @{@"vehicleType": stringWithFormat(veInfo.vehicleType)},
+                  @{@"owner": stringWithFormat(veInfo.owner)},
+                  @{@"address": stringWithFormat(veInfo.address)},
+                  @{@"model": stringWithFormat(veInfo.model)},
+                  @{@"useCharacter": stringWithFormat(veInfo.useCharacter)},
+                  @{@"engineNo": stringWithFormat(veInfo.engineNo)},
+                  @{@"VIN": stringWithFormat(veInfo.VIN)},
+                  @{@"registerDate": stringWithFormat(veInfo.registerDate)},
+                  @{@"issueDate": stringWithFormat(veInfo.issueDate)},
+                  @{@"fullImgPath": stringWithFormat(fullImgPath)}
                   ]);
     } OnFailed:^(int statusCode, UIImage *recoImg) {
         NSLog(@"OnFailed: %d", statusCode);
