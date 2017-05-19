@@ -13,11 +13,13 @@
 #import <React/RCTLog.h>
 #import <React/RCTUtils.h>
 #import <React/RCTEventDispatcher.h>
+#import <React/RCTRootView.h>
 #else
 #import "RCTConvert.h"
 #import "RCTLog.h"
 #import "RCTUtils.h"
 #import "RCTEventDispatcher.h"
+#import "RCTRootView.h"
 #endif
 
 #import <ExCardSDK/ExCardSDK.h>
@@ -59,9 +61,19 @@ RCT_ENUM_CONVERTER(UIInterfaceOrientationMask, (@{
 {
     self = [super init];
     if (self) {
-        [EXOCRCardEngineManager initEngine];
+        [self initEXOCREngine];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(initEXOCREngine)
+                                                     name:RCTContentDidAppearNotification
+                                                   object:self];
     }
     return self;
+}
+
+- (void) initEXOCREngine
+{
+    [EXOCRCardEngineManager initEngine];
 }
 
 - (dispatch_queue_t)methodQueue
@@ -519,7 +531,7 @@ RCT_REMAP_METHOD(clean, resolver:(RCTPromiseResolveBlock)resolve
     if (!_bankRecoManger) {
         UIViewController *presentingController = RCTPresentedViewController();
         if (presentingController == nil) {
-            RCTLogError(@"Tried to display action sheet picker view but there is no application window.");
+            RCTLogError(@"Tried to display view but there is no application window.");
         }
         _bankRecoManger = [EXOCRBankRecoManager sharedManager:presentingController];
     }
@@ -531,7 +543,7 @@ RCT_REMAP_METHOD(clean, resolver:(RCTPromiseResolveBlock)resolve
     if (!_drCardRecoManager) {
         UIViewController *presentingController = RCTPresentedViewController();
         if (presentingController == nil) {
-            RCTLogError(@"Tried to display action sheet picker view but there is no application window.");
+            RCTLogError(@"Tried to display view but there is no application window.");
         }
         _drCardRecoManager = [EXOCRDRCardRecoManager sharedManager:presentingController];
     }
@@ -543,7 +555,7 @@ RCT_REMAP_METHOD(clean, resolver:(RCTPromiseResolveBlock)resolve
     if (!_idCardRecoManager) {
         UIViewController *presentingController = RCTPresentedViewController();
         if (presentingController == nil) {
-            RCTLogError(@"Tried to display action sheet picker view but there is no application window.");
+            RCTLogError(@"Tried to display view but there is no application window.");
         }
         _idCardRecoManager = [EXOCRIDCardRecoManager sharedManager:presentingController];
     }
@@ -555,7 +567,7 @@ RCT_REMAP_METHOD(clean, resolver:(RCTPromiseResolveBlock)resolve
     if (!_veCardRecoManager) {
         UIViewController *presentingController = RCTPresentedViewController();
         if (presentingController == nil) {
-            RCTLogError(@"Tried to display action sheet picker view but there is no application window.");
+            RCTLogError(@"Tried to display view but there is no application window.");
         }
         _veCardRecoManager = [EXOCRVECardRecoManager sharedManager:presentingController];
     }
@@ -574,6 +586,7 @@ RCT_REMAP_METHOD(clean, resolver:(RCTPromiseResolveBlock)resolve
 - (void)dealloc
 {
     [EXOCRCardEngineManager finishEngine];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
