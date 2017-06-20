@@ -1,9 +1,9 @@
 {
-  "name": "rnkit-excard",
-  "description": "易道博识-图像识别 for ReactNative",
+  "name": "rnkit-excard-idcard",
+  "description": "易道博识-图像识别 for ReactNative, 身份证识别.",
   "main": "lib/index.js",
   "author": "SimMan <liwei0990@gmail.com>",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "scripts": {
     "test": "npm run test"
   },

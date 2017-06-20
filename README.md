@@ -2,7 +2,7 @@
 [![react-native][rn-badge]][rn]
 [![MIT][license-badge]][license]
 [![bitHound Score][bithound-badge]][bithound]
-[![Downloads](https://img.shields.io/npm/dm/rnkit-excard.svg)](https://www.npmjs.com/package/rnkit-excard)
+[![Downloads](https://img.shields.io/npm/dm/rnkit-excard-idcard.svg)](https://www.npmjs.com/package/rnkit-excard-idcard)
 
 易道博识-图像识别 for [React Native][rn].
 
@@ -10,32 +10,32 @@
 
 [**Support me with a Follow**](https://github.com/simman/followers)
 
-[npm-badge]: https://img.shields.io/npm/v/rnkit-excard.svg
-[npm]: https://www.npmjs.com/package/rnkit-excard
+[npm-badge]: https://img.shields.io/npm/v/rnkit-excard-idcard.svg
+[npm]: https://www.npmjs.com/package/rnkit-excard-idcard
 [rn-badge]: https://img.shields.io/badge/react--native-v0.40-05A5D1.svg
 [rn]: https://facebook.github.io/react-native
 [license-badge]: https://img.shields.io/dub/l/vibe-d.svg
-[license]: https://raw.githubusercontent.com/rnkit/rnkit-excard/master/LICENSE
-[bithound-badge]: https://www.bithound.io/github/rnkit/rnkit-excard/badges/score.svg
-[bithound]: https://www.bithound.io/github/rnkit/rnkit-excard
+[license]: https://raw.githubusercontent.com/rnkit/rnkit-excard-idcard/master/LICENSE
+[bithound-badge]: https://www.bithound.io/github/rnkit/rnkit-excard-idcard/badges/score.svg
+[bithound]: https://www.bithound.io/github/rnkit/rnkit-excard-idcard
 
 ## Getting Started
 
-First, `cd` to your RN project directory, and install RNMK through [rnpm](https://github.com/rnpm/rnpm) . If you don't have rnpm, you can install RNMK from npm with the command `npm i -S rnkit-excard` and link it manually (see below).
+First, `cd` to your RN project directory, and install RNMK through [rnpm](https://github.com/rnpm/rnpm) . If you don't have rnpm, you can install RNMK from npm with the command `npm i -S rnkit-excard-idcard` and link it manually (see below).
 
 ### iOS
 
 * #### React Native < 0.29 (Using rnpm)
 
-  `rnpm install rnkit-excard`
+  `rnpm install rnkit-excard-idcard`
 
 * #### React Native >= 0.29
-  `$npm install -S rnkit-excard`
+  `$npm install -S rnkit-excard-idcard`
 
-  `$react-native link rnkit-excard`
+  `$react-native link rnkit-excard-idcard`
 
 #### Manually
-1. Add `node_modules/rnkit-excard/ios/RNKitExcard.xcodeproj` to your xcode project, usually under the `Libraries` group
+1. Add `node_modules/rnkit-excard-idcard/ios/RNKitExcard.xcodeproj` to your xcode project, usually under the `Libraries` group
 1. Add `libRNKitExcard.a` (from `Products` under `RNKitExcard.xcodeproj`) to build target's `Linked Frameworks and Libraries` list
 1. Add ocr framework to `$(PROJECT_DIR)/Frameworks.`
 
@@ -43,20 +43,20 @@ First, `cd` to your RN project directory, and install RNMK through [rnpm](https:
 
 * #### React Native < 0.29 (Using rnpm)
 
-  `rnpm install rnkit-excard`
+  `rnpm install rnkit-excard-idcard`
 
 * #### React Native >= 0.29
-  `$npm install -S rnkit-excard`
+  `$npm install -S rnkit-excard-idcard`
 
-  `$react-native link rnkit-excard`
+  `$react-native link rnkit-excard-idcard`
 
 #### Manually
 1. JDK 7+ is required
 1. Add the following snippet to your `android/settings.gradle`:
 
   ```gradle
-include ':rnkit-excard'
-project(':rnkit-excard').projectDir = new File(rootProject.projectDir, '../node_modules/rnkit-excard/android/app')
+include ':rnkit-excard-idcard'
+project(':rnkit-excard-idcard').projectDir = new File(rootProject.projectDir, '../node_modules/rnkit-excard-idcard/android/app')
   ```
   
 1. Declare the dependency in your `android/app/build.gradle`
@@ -64,7 +64,7 @@ project(':rnkit-excard').projectDir = new File(rootProject.projectDir, '../node_
   ```gradle
   dependencies {
       ...
-      compile project(':rnkit-excard')
+      compile project(':rnkit-excard-idcard')
   }
   ```
   
@@ -81,7 +81,7 @@ project(':rnkit-excard').projectDir = new File(rootProject.projectDir, '../node_
   ```
 1. Add Module `ExBankCardSDK` And `ExCardSDK` In Your Main Project.
 
-Finally, you're good to go, feel free to require `rnkit-excard` in your JS files.
+Finally, you're good to go, feel free to require `rnkit-excard-idcard` in your JS files.
 
 Have fun! :metal:
 
@@ -90,7 +90,7 @@ Have fun! :metal:
 Import library
 
 ```
-import RNKitExcard from 'rnkit-excard';
+import RNKitExcard from 'rnkit-excard-idcard';
 ```
 
 ### Init
@@ -221,6 +221,6 @@ try {
 
 ## Questions
 
-Feel free to [contact me](mailto:liwei0990@gmail.com) or [create an issue](https://github.com/rnkit/rnkit-excard/issues/new)
+Feel free to [contact me](mailto:liwei0990@gmail.com) or [create an issue](https://github.com/rnkit/rnkit-excard-idcard/issues/new)
 
 > made with ♥
