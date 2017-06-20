@@ -6,6 +6,8 @@
 
 易道博识-图像识别 for [React Native][rn].
 
+**此分支只支持 身份证 识别**, 如需其它请到 `Master` 分支获取.
+
 [**Support me with a Follow**](https://github.com/simman/followers)
 
 [npm-badge]: https://img.shields.io/npm/v/rnkit-excard.svg
@@ -140,143 +142,7 @@ RNKitExcard.config({
 - MaskAll
 - AllButUpsideDown
 
-### 一、银行卡识别
-
-#### 1. 使用摄像头、相册识别
-
-```jsx
-try {
-	const result = await RNKitExcard.recoBankFromStream();
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-#### 2. 使用远程或本地图片识别
-
-```jsx
-try {
-	const imagePath = '...';
-	const result = await RNKitExcard.recoBankFromStillImage(imagePath);
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-返回值
-
-| Key | Type | Default | Description |
-| --- | --- | --- | --- |
-| bankName | string |  | 银行名称 |
-| cardName | string |  | 卡名称 |
-| cardType | string |  | 卡类型 |
-| cardNum | string |  | 卡号 |
-| validDate | string |  | 有限期 |
-| fullImgPath | string |  | 银行卡全图 |
-| cardNumImgPath | string |  | 银行卡号截图 |
-
-### 二、驾驶证识别
-
-#### 1. 使用摄像头、相册识别
-
-```jsx
-try {
-	const result = await RNKitExcard.recoDRCardFromStream();
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-#### 2. 使用远程或本地图片识别
-
-```jsx
-try {
-	const imagePath = '...';
-	const result = await RNKitExcard.recoDRCardFromStillImage(imagePath);
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-返回值
-
-| Key | Type | Default | Description |
-| --- | --- | --- | --- |
-| name | string |  | 姓名 |
-| sex | string |  | 性别 |
-| nation | string |  | 国籍 |
-| cardId | string |  | 身份证号码 |
-| address | string |  | 住址 |
-| birth | string |  | 出生日期 |
-| issueDate | string |  | 初次领证时间 |
-| driveType | string |  | 准驾车型 |
-| validDate | string |  | 有效期至日期 |
-| fullImgPath | string |  | 驾驶证全图 |
-
-### 三、行驶证识别
-
-#### 1. 使用摄像头、相册识别
-
-```jsx
-try {
-	const result = await RNKitExcard.recoVECardFromStream();
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-#### 2. 使用远程或本地图片识别
-
-```jsx
-try {
-	const imagePath = '...';
-	const result = await RNKitExcard.recoVECardFromStillImage(imagePath);
-} catch (error) {
-	if (error.code === -1) {
-		console.log('on cancel')
-	} else {
-		console.log(error)
-	}
-}
-```
-
-返回值
-
-| Key | Type | Default | Description |
-| --- | --- | --- | --- |
-| plateNo | string |  | 号牌号码 |
-| vehicleType | string |  | 车辆类型 |
-| owner | string |  | 所有人 |
-| address | string |  | 住址 |
-| model | string |  | 品牌型号 |
-| useCharacter | string |  | 使用性质 |
-| engineNo | string |  | 发动机号 |
-| VIN | string |  | 车辆识别代码 |
-| registerDate | string |  | 注册日期 |
-| issueDate | string |  | 发证日期 |
-| fullImgPath | string |  | 行驶证全图 |
-
-### 四、身份证识别
+### 一、身份证识别
 
 #### 1. 使用摄像头、相册识别
 
@@ -327,7 +193,7 @@ try {
 | frontFullImgPath | string |  | 身份证正面全图 |
 | backFullImgPath | string | | 身份证背面全图 |
 
-### 五、常量
+### 二、常量
 
 ```jsx
 const sdkVersion = RNKitExcard.sdkVersion;
@@ -339,7 +205,7 @@ const kernelVersion = RNKitExcard.kernelVersion;
 | sdkVersion | string |  | sdk版本号 |
 | kernelVersion | string |  | 识别核心版本号 |
 
-### 六、clean 清理图片临时目录
+### 三、clean 清理图片临时目录
 
 ```jsx
 try {
