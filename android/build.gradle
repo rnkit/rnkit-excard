@@ -37,8 +37,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':ExBankCardSDK')
-    compile project(':ExCardSDK')
+    compile project(':ExIDCardSDK')
     compile 'com.facebook.react:react-native:+'
 }
   
