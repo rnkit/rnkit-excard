@@ -282,7 +282,7 @@ try {
 
 ```jsx
 try {
-	const bFront = true  // 身份证方向，true-正面，false-背面
+	const bFront = true  // 身份证方向，true-正面，false-背面
 	const result = await RNKitExcard.recoIDCardFromStreamWithSide(bFront);
 } catch (error) {
 	if (error.code === -1) {
@@ -314,7 +314,7 @@ try {
 | --- | --- | --- | --- |
 | type | int |  | 1:正面  2:反面 |
 | name | string |  | 姓名 |
-| gender | string |  | 性别 |
+| gender | string |  | 性别 |
 | nation | string |  | 名族 |
 | birth | string |  | 出生 |
 | address | string |  | 地址 |
@@ -327,7 +327,7 @@ try {
 | frontFullImgPath | string |  | 身份证正面全图 |
 | backFullImgPath | string | | 身份证背面全图 |
 
-### 五、常量
+### 五、常量
 
 ```jsx
 const sdkVersion = RNKitExcard.sdkVersion;
