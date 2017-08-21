@@ -39,6 +39,7 @@ public class EXOCRContext {
      * @return
      */
     public String saveImage(Bitmap bmp, double quality) throws IOException {
+        if (bmp == null) return null;
         int q = quality > 0 ? (int)(quality * 100) : 75;
         Log.d("quality", q + "");
         Log.d("quality", quality + "");
